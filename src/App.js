@@ -6,15 +6,24 @@ import "antd/dist/antd.min.css";
 import DetailMovie from "./Pages/DetailMovie/DetailMovie";
 import Layout from "./Layout/Layout";
 import Spinner from "./Components/Spinner/Spinner";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import LoginRegLayout from "./Layout/LoginRegLayout";
 
 function App() {
   return (
-    <div>
+    <div className="bg-color1">
       <Spinner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout Component={HomePage} />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={<LoginRegLayout Component={LoginPage} />}
+          />
+          <Route
+            path="/register"
+            element={<LoginRegLayout Component={RegisterPage} />}
+          />
           <Route
             path="/detail/:id"
             element={<Layout Component={DetailMovie} />}

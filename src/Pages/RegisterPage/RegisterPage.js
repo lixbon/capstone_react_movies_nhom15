@@ -1,25 +1,25 @@
 import React from "react";
 import { Button, Form, Input, message } from "antd";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Lottie from "lottie-react";
 import bg_animate from "../../assets/bg_login.json";
-import { setUserLoginActionServ } from "../../Redux/actions/actionUser";
+import { setUserRegisterActionServ } from "../../Redux/actions/actionUser";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const onFinish = (values) => {
     let onSuccess = () => {
-      message.success("Login Success");
+      message.success("Register Success");
       setTimeout(() => {
         navigate("/");
-      }, 1000);
+      }, 2000);
     };
     let onFail = (reason) => {
       message.error(reason);
     };
-    dispatch(setUserLoginActionServ(values, onSuccess, onFail));
+    dispatch(setUserRegisterActionServ(values, onSuccess, onFail));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -27,7 +27,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="container mx-auto flex items-center justify-center p-10">
+    <div className="container mx-auto h-screen w-screen flex items-center justify-center p-10">
       <div className="w-1/2 h-full">
         <Lottie animationData={bg_animate} />
       </div>
@@ -48,7 +48,7 @@ export default function LoginPage() {
           autoComplete="off"
         >
           <Form.Item
-            label="Tài Khoản"
+            label="Username"
             name="taiKhoan"
             rules={[
               {
@@ -61,7 +61,7 @@ export default function LoginPage() {
           </Form.Item>
 
           <Form.Item
-            label="Mật Khẩu"
+            label="Password"
             name="matKhau"
             rules={[
               {
@@ -74,6 +74,43 @@ export default function LoginPage() {
           </Form.Item>
 
           <Form.Item
+            label="Name"
+            name="hoTen"
+            rules={[
+              {
+                required: true,
+                message: "Please input your name!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your email!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Phone Number"
+            name="soDt"
+            rules={[
+              {
+                required: true,
+                message: "Please input your phone number!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
             wrapperCol={{
               offset: 8,
               span: 16,
@@ -83,12 +120,6 @@ export default function LoginPage() {
               Submit
             </Button>
           </Form.Item>
-          <h3>
-            Nếu bạnh chưa có tài khoản, vui lòng{" "}
-            <NavLink to="/register">
-              <span>Đăng ký</span>
-            </NavLink>
-          </h3>
         </Form>
       </div>
     </div>

@@ -22,8 +22,25 @@ export const setUserLoginActionServ = (
         dispatch(setUserLoginSuccess(res.data.content));
       })
       .catch((err) => {
-        onLoginFail();
-        console.log(err);
+        onLoginFail(err.response.data.content);
+      });
+  };
+};
+export const setUserRegisterActionServ = (
+  dataRegister,
+  onRegisterSuccess,
+  onRegisterFail
+) => {
+  return (dispatch) => {
+    userServ
+      .postRegister(dataRegister)
+      .then((res) => {
+        localServ.user.set(res.data.content);
+        onRegisterSuccess();
+        dispatch(setUserLoginSuccess(res.data.content));
+      })
+      .catch((err) => {
+        onRegisterFail(err.response.data.content);
       });
   };
 };

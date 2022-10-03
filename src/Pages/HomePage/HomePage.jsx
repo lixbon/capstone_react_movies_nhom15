@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import Button from "../../Components/Button/Button";
 import Spinner from "../../Components/Spinner/Spinner";
 import {
   setLoadingOffAction,
@@ -11,6 +12,7 @@ import TabsMovies from "./TabsMovies";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const [showAllFilm, setshowAllFilm] = useState(false);
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLoadingOnAction());
@@ -26,13 +28,34 @@ export default function HomePage() {
       });
   }, []);
   const renderMovies = () => {
+    return movies.slice(0, 10).map((data, index) => {
+      return <ItemMovie key={index} data={data} />;
+    });
+  };
+  const renderFullMovies = () => {
     return movies.map((data, index) => {
       return <ItemMovie key={index} data={data} />;
     });
   };
+  let handleShowMoreFilm = () => {
+    setshowAllFilm(true);
+  };
+  let handleShowLessFilm = () => {
+    setshowAllFilm(false);
+  };
+
   return (
     <div className="container mx-auto space-y-10">
-      <div className="grid grid-cols-5 gap-10 ">{renderMovies()}</div>
+      <div className="grid grid-cols-5 gap-10 ">
+        {showAllFilm ? renderFullMovies() : renderMovies()}
+      </div>
+      <div className="flex justify-center">
+        {showAllFilm ? (
+          <Button content={"View Less"} f={handleShowLessFilm} />
+        ) : (
+          <Button content={"View More"} f={handleShowMoreFilm} />
+        )}
+      </div>
       <div>
         <TabsMovies />
       </div>

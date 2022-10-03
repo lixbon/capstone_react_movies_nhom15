@@ -1,11 +1,13 @@
 import React from "react";
+import Footer from "../Components/Footer/Footer";
 import Header from "../Components/HeaderTheme/Header";
 
 export default function Layout({ Component }) {
   return (
-    <div className="space-y-10">
+    <div className="">
       <Header />
-      <div> {<Component />}</div>
+      <div className="pt-20"> {<Component />}</div>
+      <Footer />
     </div>
   );
 }

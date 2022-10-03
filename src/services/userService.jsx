@@ -12,4 +12,14 @@ export const userServ = {
       },
     });
   },
+  postRegister: (dataRegister) => {
+    return axios({
+      url: `${BASE_URL}/api/QuanLyNguoiDung/DangKy`,
+      method: "POST",
+      data: dataRegister,
+      headers: {
+        TokenCybersoft: TOKEN_CYBERSOFT,
+      },
+    });
+  },
 };

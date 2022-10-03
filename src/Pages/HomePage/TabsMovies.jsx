@@ -3,7 +3,6 @@ import { Tabs } from "antd";
 import { useEffect } from "react";
 import { moviesServ } from "../../services/movieService";
 import { useState } from "react";
-import { render } from "@testing-library/react";
 import ItemTabsMovie from "./ItemTabsMovie";
 
 export default function TabsMovies() {
@@ -42,7 +41,7 @@ export default function TabsMovies() {
                 >
                   <div
                     style={{ height: 600 }}
-                    className=" scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-blue-200 shadow-xl"
+                    className=" scrollbar-thin scrollbar-thumb-color3 scrollbar-track-color2 shadow-xl"
                   >
                     {cumRap.danhSachPhim.map((phim, index) => {
                       return <ItemTabsMovie key={index} data={phim} />;

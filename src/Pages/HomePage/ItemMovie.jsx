@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import { NavLink } from "react-router-dom";
+import Button from "../../Components/Button/Button";
 const { Meta } = Card;
 
 export default function ItemMovie({ data }) {
@@ -19,11 +20,9 @@ export default function ItemMovie({ data }) {
           />
         }
       >
-        <Meta title={<p className="text-red-500 truncate">{data.tenPhim}</p>} />
+        <Meta title={<p className="text-color1 truncate">{data.tenPhim}</p>} />
         <NavLink to={`/detail/${data.maPhim}`}>
-          <button className="px-6 py-2 bg-cyan-500 text-white rounded-md hover:scale-110 hover:bg-blue-600 duration-300 cursor-pointer">
-            Detail
-          </button>
+          <Button content={"Detail"} />
         </NavLink>
       </Card>
     </div>

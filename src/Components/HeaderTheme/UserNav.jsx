@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { localServ } from "../../services/localService";
+import Button from "../Button/Button";
 
 export default function UserNav() {
   let user = useSelector((state) => {
@@ -34,13 +35,11 @@ export default function UserNav() {
       return (
         <>
           <NavLink to="/login" className="space-x-5">
-            <button className="px-4 py-2 border rounded bg-cyan-300 text-white hover:scale-110 duration-200">
-              Login
-            </button>
+            <Button content={"Đăng Nhập"} />
           </NavLink>
-          <button className="px-4 py-2 border rounded bg-red-500 text-white hover:scale-110 duration-200">
-            Register
-          </button>
+          <NavLink to="/register" className="space-x-5">
+            <Button content={"Đăng Ký"} style={"bg-red-500"} />
+          </NavLink>
         </>
       );
     }
