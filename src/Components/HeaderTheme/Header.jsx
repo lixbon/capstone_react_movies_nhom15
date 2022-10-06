@@ -15,11 +15,11 @@ export default function Header() {
   window.addEventListener("scroll", changeNavColor);
   return (
     <div
-      className={`w-full fixed z-10 bg-color1 ${
+      className={`w-full fixed z-10 bg-[#000000f2]  ${
         navColor ? "shadow-md shadow-white" : ""
       }`}
     >
-      <div className="container mx-auto">
+      <div className="max-w-layout mx-auto">
         <div className="h-20  flex mx-auto justify-between items-center">
           <span className="text-white text-2xl font-medium animate-bounce">
             CyberSoftCinema

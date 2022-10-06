@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../Components/Button/Button";
-import Spinner from "../../Components/Spinner/Spinner";
+import { setMoviesList } from "../../Redux/actions/actionsMovies";
 import {
   setLoadingOffAction,
   setLoadingOnAction,
 } from "../../Redux/actions/actionSpinner";
 import { moviesServ } from "../../services/movieService";
+import HomeBanner from "./HomeBanner";
 import ItemMovie from "./ItemMovie";
 import TabsMovies from "./TabsMovies";
 
 export default function HomePage() {
-  const [movies, setMovies] = useState([]);
+  let movies = useSelector((state) => {
+    return state.moviesReducer.moviesList;
+  });
   const [showAllFilm, setshowAllFilm] = useState(false);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -20,7 +23,7 @@ export default function HomePage() {
       .getListMovie()
       .then((res) => {
         dispatch(setLoadingOffAction());
-        setMovies(res.data.content);
+        dispatch(setMoviesList(res.data.content));
       })
       .catch((err) => {
         dispatch(setLoadingOffAction());
@@ -28,7 +31,7 @@ export default function HomePage() {
       });
   }, []);
   const renderMovies = () => {
-    return movies.slice(0, 10).map((data, index) => {
+    return movies.slice(0, 8).map((data, index) => {
       return <ItemMovie key={index} data={data} />;
     });
   };
@@ -45,15 +48,16 @@ export default function HomePage() {
   };
 
   return (
-    <div className="container mx-auto space-y-10">
-      <div className="grid grid-cols-5 gap-10 ">
+    <div className="max-w-layout mx-auto space-y-10">
+      <HomeBanner />
+      <div className="grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
         {showAllFilm ? renderFullMovies() : renderMovies()}
       </div>
       <div className="flex justify-center">
         {showAllFilm ? (
-          <Button content={"View Less"} f={handleShowLessFilm} />
+          <Button content={"Rút gọn"} f={handleShowLessFilm} />
         ) : (
-          <Button content={"View More"} f={handleShowMoreFilm} />
+          <Button content={"Xem tất cả"} f={handleShowMoreFilm} />
         )}
       </div>
       <div>

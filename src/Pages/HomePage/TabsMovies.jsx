@@ -30,9 +30,7 @@ export default function TabsMovies() {
                 <Tabs.TabPane
                   tab={
                     <div className="text-left w-48">
-                      <p className="text-gray-700 truncate">
-                        {cumRap.tenCumRap}
-                      </p>
+                      <p className="text-white truncate">{cumRap.tenCumRap}</p>
                       <p className="truncate">{cumRap.diaChi}</p>
                       <hr />
                     </div>

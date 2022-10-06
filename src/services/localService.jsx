@@ -1,4 +1,5 @@
 const USER = "USER";
+const MOVIESLIST = "MOVIESLIST";
 export const localServ = {
   user: {
     set: (dataLogin) => {
@@ -15,6 +16,20 @@ export const localServ = {
     },
     remove: () => {
       localStorage.removeItem(USER);
+    },
+  },
+  movies: {
+    set: (movieslist) => {
+      let jsonData = JSON.stringify(movieslist);
+      localStorage.setItem(MOVIESLIST, jsonData);
+    },
+    get: () => {
+      let jsonData = localStorage.getItem(MOVIESLIST);
+      if (jsonData) {
+        return JSON.parse(jsonData);
+      } else {
+        return null;
+      }
     },
   },
 };

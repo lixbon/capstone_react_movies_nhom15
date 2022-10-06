@@ -8,6 +8,7 @@ import Layout from "./Layout/Layout";
 import Spinner from "./Components/Spinner/Spinner";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import LoginRegLayout from "./Layout/LoginRegLayout";
+import CheckOutPage from "./Pages/CheckOutPage/CheckOutPage";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
           <Route
             path="/detail/:id"
             element={<Layout Component={DetailMovie} />}
+          />
+          <Route
+            path="/purchase/:maLichChieu"
+            element={<Layout Component={CheckOutPage} />}
           />
         </Routes>
       </BrowserRouter>

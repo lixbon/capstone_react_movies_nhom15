@@ -3,7 +3,6 @@ import { Button, Form, Input, message } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Lottie from "lottie-react";
-import bg_animate from "../../assets/bg_login.json";
 import { setUserLoginActionServ } from "../../Redux/actions/actionUser";
 
 export default function LoginPage() {
@@ -27,69 +26,75 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="container mx-auto flex items-center justify-center p-10">
-      <div className="w-1/2 h-full">
-        <Lottie animationData={bg_animate} />
-      </div>
-      <div className="w-1/2 h-full flex items-center justify-center">
-        <Form
-          className="bg-white w-full"
-          layout="vertical"
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 24,
-          }}
-          initialValues={{}}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Tài Khoản"
-            name="taiKhoan"
-            rules={[
-              {
-                required: true,
-                message: "Please input your username!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Mật Khẩu"
-            name="matKhau"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
+    <div className="max-w-layout mx-auto pt-40">
+      <div className="flex justify-center items-center">
+        <div className="w-1/2">
+          <Form
+            className="bg-white w-full rounded-xl"
+            layout="vertical"
+            name="basic"
+            labelCol={{
+              span: 8,
             }}
+            wrapperCol={{
+              span: 24,
+            }}
+            initialValues={{}}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
           >
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-          <h3>
-            Nếu bạnh chưa có tài khoản, vui lòng{" "}
-            <NavLink to="/register">
-              <span>Đăng ký</span>
-            </NavLink>
-          </h3>
-        </Form>
+            <div className=" p-4">
+              <Form.Item
+                label="Tài Khoản"
+                name="taiKhoan"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Mật Khẩu"
+                name="matKhau"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+              <Form.Item
+                wrapperCol={{
+                  span: 24,
+                }}
+              >
+                <div
+                  className="space-y-4 py-4
+              "
+                >
+                  <div className="justify-center items-center flex">
+                    <Button type="primary" htmlType="submit">
+                      Đăng Nhập
+                    </Button>
+                  </div>
+
+                  <h3 className="text-center">
+                    Nếu bạnh chưa có tài khoản, vui lòng{" "}
+                    <NavLink to="/register">
+                      <span>Đăng ký</span>
+                    </NavLink>
+                  </h3>
+                </div>
+              </Form.Item>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );

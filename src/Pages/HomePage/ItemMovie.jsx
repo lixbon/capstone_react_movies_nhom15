@@ -22,7 +22,7 @@ export default function ItemMovie({ data }) {
       >
         <Meta title={<p className="text-color1 truncate">{data.tenPhim}</p>} />
         <NavLink to={`/detail/${data.maPhim}`}>
-          <Button content={"Detail"} />
+          <Button content={"Xem Chi Tiết"} />
         </NavLink>
       </Card>
     </div>

@@ -15,20 +15,14 @@ export default function UserNav() {
     //dispatch({type:SET_USER,payload:null})
     window.location.href = "/login";
   };
-  console.log(user);
   let renderContent = () => {
     if (user) {
       return (
         <>
-          <span className="font-medium text-blue-500 underline">
+          <span className=" italic text-white text-xl underline hover:text-color3 duration-200 hover:text-2xl cursor-pointer">
             {user.hoTen}
           </span>
-          <button
-            onClick={handleLogOut}
-            className="border rounded border-red-500 px-5 py-2 text-red-500"
-          >
-            Log Out
-          </button>
+          <Button content={"Logout"} f={handleLogOut} style={"bg-red-500"} />
         </>
       );
     } else {
