@@ -1,15 +1,23 @@
 import React from "react";
 import { Tabs } from "antd";
 import { useSelector } from "react-redux";
-import Button from "../../Components/Button/Button";
 import moment from "moment";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MoviesScheduleTabs() {
   let moviesDetail = useSelector((state) => {
     return state.moviesReducer.moviesDetail;
   });
-  const handleGoCheckOutPage = (maLichChieu) => {};
+  const { userInfo } = useSelector((state) => {
+    return state.userReducer;
+  });
+  const handleGoCheckOutPage = (maLichChieu) => {
+    if (userInfo) {
+      navigate(`/purchase/${maLichChieu}`);
+    } else {
+      navigate("/login");
+    }
+  };
   let navigate = useNavigate();
   let renderDetail = () => {
     return moviesDetail.heThongRapChieu?.map((hethongRap, index) => {
@@ -37,21 +45,17 @@ export default function MoviesScheduleTabs() {
                   <div className="grid gap-8 grid-cols-4 py-4">
                     {cumRapChieu.lichChieuPhim.map((lichChieuPhim, index) => {
                       return (
-                        <div key={index}>
-                          <div
-                            onClick={() => {
-                              navigate(
-                                `/purchase/${lichChieuPhim.maLichChieu}`
-                              );
-                            }}
-                          >
-                            <Button
-                              content={moment(
-                                lichChieuPhim.ngayChieuGioChieu
-                              ).format("DD/MM_YYYY ~ hh:mm")}
-                            />
-                          </div>
-                        </div>
+                        <button
+                          key={index}
+                          onClick={() => {
+                            handleGoCheckOutPage(lichChieuPhim.maLichChieu);
+                          }}
+                          className="px-4 py-2 bg-gradient-to-r from-green-600 to-blue-500 text-white rounded-md hover:scale-110 hover:from-red-400 hover:to-purple-400 duration-300 cursor-pointer"
+                        >
+                          {moment(lichChieuPhim.ngayChieuGioChieu).format(
+                            "DD/MM_YYYY ~ hh:mm"
+                          )}
+                        </button>
                       );
                     })}
                   </div>
