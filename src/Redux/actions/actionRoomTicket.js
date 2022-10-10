@@ -17,16 +17,23 @@ export const pickSeat = (seats) => {
     payload: seats,
   };
 };
+const setVeDaDat = (ticket) => {
+  return {
+    type: DAT_VE,
+    payload: ticket,
+  };
+};
 
 export const datVeAction = (
   thongTinDatVe,
   onRegisterSuccess,
   onRegisterFail
 ) => {
-  return () => {
+  return (dispatch) => {
     placeOrderService
       .placeOrderTicket(thongTinDatVe)
       .then((res) => {
+        dispatch(setVeDaDat(thongTinDatVe));
         onRegisterSuccess();
         console.log(res);
       })

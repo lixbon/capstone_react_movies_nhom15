@@ -69,10 +69,13 @@ export default function CheckOutPage() {
     const thongTinDatVe = new ThongTinDatVe();
     thongTinDatVe.maLichChieu = maLichChieu;
     thongTinDatVe.danhSachVe = danhSachGheDangDat;
+    thongTinDatVe.tenPhim = thongTinPhim.tenPhim;
+    thongTinDatVe.hinhAnh = thongTinPhim.hinhAnh;
+
     let onSuccess = () => {
-      message.success("dat ve Thanh Cong");
+      message.success("Đặt Vé Thành Công");
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/bookedfilm");
       }, 1000);
     };
     let onFail = (reason) => {

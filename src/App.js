@@ -9,6 +9,7 @@ import Spinner from "./Components/Spinner/Spinner";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import LoginRegLayout from "./Layout/LoginRegLayout";
 import CheckOutPage from "./Pages/CheckOutPage/CheckOutPage";
+import BookedFilmPage from "./Pages/BookedFilmPage/BookedFilmPage";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
           <Route
             path="/purchase/:maLichChieu"
             element={<Layout Component={CheckOutPage} />}
+          />
+          <Route
+            path="/bookedfilm"
+            element={<Layout Component={BookedFilmPage} />}
           />
         </Routes>
       </BrowserRouter>

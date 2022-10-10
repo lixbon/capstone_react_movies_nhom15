@@ -7,6 +7,7 @@ import {
 let initialState = {
   chiTietPhongVe: {},
   danhSachGheDangDat: [],
+  danhSachPhimDaDat: [],
 };
 export const placeOrderReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,8 +27,20 @@ export const placeOrderReducer = (state = initialState, action) => {
       return { ...state, danhSachGheDangDat: danhSachGheCapNhat };
     }
     case DAT_VE:
-      state.chiTietPhongVe = action.payload;
-      return { ...state };
+      let danhSachPhimDaDatCapNhat = [...state.danhSachPhimDaDat];
+      let index = danhSachPhimDaDatCapNhat.findIndex(
+        (phim) => phim.maLichChieu === action.payload.maLichChieu
+      );
+      if (index != -1) {
+        danhSachPhimDaDatCapNhat[index].danhSachVe.push(
+          ...action.payload.danhSachVe
+        );
+      } else {
+        danhSachPhimDaDatCapNhat.push(action.payload);
+      }
+      state.danhSachGheDangDat = [];
+      state.danhSachPhimDaDat = action.payload;
+      return { ...state, danhSachPhimDaDat: danhSachPhimDaDatCapNhat };
 
     default:
       return { ...state };
