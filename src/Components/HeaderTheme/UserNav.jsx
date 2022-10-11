@@ -9,10 +9,8 @@ export default function UserNav() {
     return state.userReducer.userInfo;
   });
   const handleLogOut = () => {
-    //xoa data tuw local
     localServ.user.remove();
-    //remove data redux
-    //dispatch({type:SET_USER,payload:null})
+
     window.location.href = "/login";
   };
   let renderContent = () => {
@@ -22,19 +20,19 @@ export default function UserNav() {
           <span className=" italic text-white text-xl underline hover:text-color3 duration-200 hover:text-2xl cursor-pointer">
             {user.hoTen}
           </span>
-          <Button content={"Logout"} f={handleLogOut} style={"bg-red-500"} />
+          <Button content={"Đăng Xuất"} f={handleLogOut} style={"bg-red-500"} />
         </>
       );
     } else {
       return (
-        <>
-          <NavLink to="/login" className="space-x-5">
+        <div className="space-x-4">
+          <NavLink to="/login" className="">
             <Button content={"Đăng Nhập"} />
           </NavLink>
-          <NavLink to="/register" className="space-x-5">
+          <NavLink to="/register" className="">
             <Button content={"Đăng Ký"} style={"bg-red-500"} />
           </NavLink>
-        </>
+        </div>
       );
     }
   };

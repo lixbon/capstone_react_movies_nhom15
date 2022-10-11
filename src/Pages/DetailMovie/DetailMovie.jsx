@@ -50,9 +50,9 @@ export default function DetailMovie(props) {
           </h3>
         </div>
         <div className="flex flex-col justify-center items-center col-span-2">
-          <h3 className="text-white text-3xl border-[6px] border-green-600 p-6 lg:p-10 rounded-full">
-            {danhGia}
-          </h3>
+          <div className="border-[8px] border-green-600 w-24 h-24 lg:w-32 lg:h-32 flex justify-center items-center rounded-full">
+            <h3 className="text-white text-2xl lg:text-4xl">{danhGia}</h3>
+          </div>
           <div>
             <Rate allowHalf defaultValue={danhGia / 2} />
           </div>

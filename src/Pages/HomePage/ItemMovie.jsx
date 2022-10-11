@@ -13,11 +13,7 @@ export default function ItemMovie({ data }) {
           width: "100%",
         }}
         cover={
-          <img
-            className="h-80 w-full object-cover"
-            alt="example"
-            src={data.hinhAnh}
-          />
+          <img className="h-80 object-cover" alt="example" src={data.hinhAnh} />
         }
       >
         <Meta title={<p className="text-color1 truncate">{data.tenPhim}</p>} />

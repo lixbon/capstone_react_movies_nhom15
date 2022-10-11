@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, Input, message } from "antd";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Lottie from "lottie-react";
 import { setUserRegisterActionServ } from "../../Redux/actions/actionUser";
@@ -26,7 +26,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-layout mx-auto  flex items-center justify-center pt-40">
+    <div className="max-w-layout mx-auto min-h-[75vh] flex items-center justify-center">
       <div className="w-1/2 h-full flex items-center justify-center">
         <Form
           className="bg-white w-full rounded-3xl"
@@ -109,13 +109,26 @@ export default function RegisterPage() {
 
             <Form.Item
               wrapperCol={{
-                offset: 8,
-                span: 16,
+                span: 34,
               }}
             >
-              <Button type="primary" htmlType="submit">
-                Đăng Ký
-              </Button>
+              <div
+                className="space-y-4 py-4
+              "
+              >
+                <div className="justify-center items-center flex">
+                  <Button type="primary" htmlType="submit">
+                    Đăng Ký
+                  </Button>
+                </div>
+
+                <h3 className="text-center">
+                  Nếu bạnh đã có tài khoản, vui lòng{" "}
+                  <NavLink to="/login">
+                    <span>Đăng Nhập</span>
+                  </NavLink>
+                </h3>
+              </div>
             </Form.Item>
           </div>
         </Form>

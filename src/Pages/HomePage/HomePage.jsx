@@ -30,8 +30,8 @@ export default function HomePage() {
         console.log(err);
       });
   }, []);
-  const renderMovies = () => {
-    return movies.slice(0, 8).map((data, index) => {
+  const renderMovies = (num) => {
+    return movies.slice(0, num).map((data, index) => {
       return <ItemMovie key={index} data={data} />;
     });
   };
@@ -50,8 +50,11 @@ export default function HomePage() {
   return (
     <div className="max-w-layout mx-auto space-y-10">
       <HomeBanner />
-      <div className="grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-        {showAllFilm ? renderFullMovies() : renderMovies()}
+      <div className=" hidden lg:grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+        {showAllFilm ? renderFullMovies() : renderMovies(8)}
+      </div>
+      <div className="grid lg:hidden  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+        {showAllFilm ? renderFullMovies() : renderMovies(6)}
       </div>
       <div className="flex justify-center">
         {showAllFilm ? (

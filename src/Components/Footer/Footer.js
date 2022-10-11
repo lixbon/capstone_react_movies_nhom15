@@ -7,7 +7,7 @@ const Contact = () => {
       <div className="max-w-layout mx-auto py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="flex flex-col space-y-2">
-            <h2 className="text-title font-semibold text-xl z-10 uppercase w-full text-white">
+            <h2 className="text-title font-semibold text-xl uppercase w-full text-white">
               KẾT NỐI VỚI CHÚNG TÔI
             </h2>
             <div className="flex gap-2 w-full justify-start">

@@ -3,6 +3,7 @@ import {
   CHON_GHE,
   DAT_VE,
   SET_ROOMTICKET,
+  XOA_CHON_GHE,
 } from "../constants/constantRoomTicket";
 
 export const setRoomTicket = (roomticket) => {
@@ -14,6 +15,12 @@ export const setRoomTicket = (roomticket) => {
 export const pickSeat = (seats) => {
   return {
     type: CHON_GHE,
+    payload: seats,
+  };
+};
+export const removePickedSeat = (seats) => {
+  return {
+    type: XOA_CHON_GHE,
     payload: seats,
   };
 };

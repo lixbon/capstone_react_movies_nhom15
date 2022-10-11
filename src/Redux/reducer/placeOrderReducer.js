@@ -1,8 +1,8 @@
-import { ThongTinDatVe } from "../../Model/ThongTinDatVe";
 import {
   CHON_GHE,
   DAT_VE,
   SET_ROOMTICKET,
+  XOA_CHON_GHE,
 } from "../constants/constantRoomTicket";
 let initialState = {
   chiTietPhongVe: {},
@@ -25,6 +25,10 @@ export const placeOrderReducer = (state = initialState, action) => {
         danhSachGheCapNhat.push(action.payload);
       }
       return { ...state, danhSachGheDangDat: danhSachGheCapNhat };
+    }
+    case XOA_CHON_GHE: {
+      state.danhSachGheDangDat = [];
+      return { ...state };
     }
     case DAT_VE:
       let danhSachPhimDaDatCapNhat = [...state.danhSachPhimDaDat];

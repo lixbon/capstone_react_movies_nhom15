@@ -31,7 +31,7 @@ const HomeBanner = () => {
       >
         {dataBanner.map((item, index) => (
           <SwiperSlide key={index} className="">
-            <div className="h-[800px] w-full">
+            <div className="lg:h-[800px] md:h-96 h-64 w-full">
               <img src={item.hinhAnh} alt="" className="h-full w-full" />
             </div>
           </SwiperSlide>

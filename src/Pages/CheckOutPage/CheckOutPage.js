@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "../../Components/Button/Button";
 import {
   datVeAction,
   pickSeat,
@@ -69,8 +68,7 @@ export default function CheckOutPage() {
     const thongTinDatVe = new ThongTinDatVe();
     thongTinDatVe.maLichChieu = maLichChieu;
     thongTinDatVe.danhSachVe = danhSachGheDangDat;
-    thongTinDatVe.tenPhim = thongTinPhim.tenPhim;
-    thongTinDatVe.hinhAnh = thongTinPhim.hinhAnh;
+    thongTinDatVe.thongTinPhim = thongTinPhim;
 
     let onSuccess = () => {
       message.success("Đặt Vé Thành Công");
@@ -85,8 +83,8 @@ export default function CheckOutPage() {
   };
   return (
     <div className="max-w-layout mx-auto py-10">
-      <div className="grid grid-cols-12">
-        <div className="col-span-9 flex flex-col items-center space-y-10">
+      <div className="block lg:flex space-y-10">
+        <div className="w-full  lg:w-9/12 flex flex-col items-center space-y-10 mx-auto">
           <div className="relative">
             <img src={Screen} alt="" className="w-[850px] h-8" />
             <h3 className="text-2xl absolute top-0 left-1/2 -translate-x-1/2">
@@ -115,37 +113,57 @@ export default function CheckOutPage() {
             </div>
           </div>
         </div>
-        <div className="col-span-3 text-white">
-          <h3 className="text-center text-2xl text-red-500">
-            {danhSachGheDangDat
-              .reduce((tongTien, ghe, index) => {
-                return (tongTien += ghe.giaVe);
-              }, 0)
-              .toLocaleString()}
-            <span> VNĐ</span>
-          </h3>
-          <hr />
-          <h3 className="text-xl text-white">{thongTinPhim?.tenPhim}</h3>
-          <p className="text-xl text-white">{thongTinPhim?.tenCumRap}</p>
-          <h3 className="text-xl text-white"> {thongTinPhim?.ngayChieu}</h3>
-          <hr />
-          <div className="">
-            <div className="flex items-center space-x-2">
-              <span className="text-xl">Ghế:</span>
-              <div className="grid grid-cols-6">
-                {_.sortBy(danhSachGheDangDat, ["stt"]).map((gheDD, index) => {
-                  return (
-                    <span key={index} className="text-green-500 text-xl mr-2">
-                      {gheDD.stt}
-                    </span>
-                  );
-                })}
+        <div className="w-full lg:w-3/12 text-white flex lg:block">
+          <div className="w-1/2 lg:w-full flex flex-col justify-center">
+            <h3 className="text-center text-2xl text-red-500">
+              {danhSachGheDangDat
+                .reduce((tongTien, ghe, index) => {
+                  return (tongTien += ghe.giaVe);
+                }, 0)
+                .toLocaleString()}
+              <span> VNĐ</span>
+            </h3>
+
+            <h3 className="text-xl text-white">{thongTinPhim?.tenPhim}</h3>
+            <p className="text-xl text-white">{thongTinPhim?.tenCumRap}</p>
+            <h3 className="text-xl text-red-400">
+              {" "}
+              {thongTinPhim?.ngayChieu} - {thongTinPhim?.gioChieu}
+            </h3>
+
+            <div className="">
+              <div className="flex items-center space-x-2 py-2">
+                <span className="text-xl">Ghế:</span>
+                <div className="grid grid-cols-6">
+                  {_.sortBy(danhSachGheDangDat, ["stt"]).map((gheDD, index) => {
+                    return (
+                      <span key={index} className="text-green-500 text-xl mr-2">
+                        {gheDD.stt}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-            <hr />
           </div>
-          <div className="mt-10">
-            <Button content={"Đặt Vé"} f={datVe} />
+          <div className="w-1/2 lg:w-full flex flex-col justify-center">
+            <div>
+              <h3 className="text-white text-xl">
+                Email: <span className="text-red-400">{userInfo.email}</span>
+              </h3>
+              <h3 className="text-white text-xl">
+                Số Điện Thoại:{" "}
+                <span className="text-red-400">{userInfo.soDT}</span>
+              </h3>
+            </div>
+            <div className="mt-10">
+              <button
+                className="bg-green-500 px-10 py-3 rounded-lg text-xl hover:bg-red-300 hover:text-gray-500 duration-200 hover:scale-105"
+                onClick={datVe}
+              >
+                Đặt vé
+              </button>
+            </div>
           </div>
         </div>
       </div>
