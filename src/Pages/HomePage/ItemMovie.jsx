@@ -40,7 +40,7 @@ export default function ItemMovie({ data }) {
           </NavLink>
         </Card>
       </div>
-      <div className="bg-[#00000080] absolute top-0 left-0 w-full h-80 opacity-100 duration-200">
+      <div className="bg-[#00000080] absolute top-0 left-0 w-full h-80 opacity-0 group-hover:opacity-100 duration-200">
         <div className="flex items-center justify-center h-full">
           <div
             onClick={() => {
