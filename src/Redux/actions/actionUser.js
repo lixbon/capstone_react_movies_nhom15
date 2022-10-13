@@ -31,13 +31,11 @@ export const setUserRegisterActionServ = (
   onRegisterSuccess,
   onRegisterFail
 ) => {
-  return (dispatch) => {
+  return () => {
     userServ
       .postRegister(dataRegister)
       .then((res) => {
-        localServ.user.set(res.data.content);
         onRegisterSuccess();
-        dispatch(setUserLoginSuccess(res.data.content));
       })
       .catch((err) => {
         onRegisterFail(err.response.data.content);

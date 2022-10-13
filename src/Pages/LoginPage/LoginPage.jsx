@@ -3,6 +3,7 @@ import { Button, Form, Input, message } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserLoginActionServ } from "../../Redux/actions/actionUser";
+import Style from "./Login.module.css";
 
 export default function LoginPage() {
   let navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function LoginPage() {
     <div className="max-w-layout mx-auto min-h-[75vh] flex items-center justify-center">
       <div className="w-1/2 h-full flex items-center justify-center">
         <Form
-          className="bg-white w-full rounded-xl"
+          className={`${Style["loginglass"]} w-full`}
           layout="vertical"
           name="basic"
           labelCol={{
@@ -82,10 +83,12 @@ export default function LoginPage() {
                   </Button>
                 </div>
 
-                <h3 className="text-center">
+                <h3 className="text-center text-white">
                   Nếu bạnh chưa có tài khoản, vui lòng{" "}
                   <NavLink to="/register">
-                    <span>Đăng ký</span>
+                    <span className="text-red-500 font-semibold underline">
+                      Đăng ký
+                    </span>
                   </NavLink>
                 </h3>
               </div>

@@ -65,12 +65,15 @@ export default function Header() {
             >
               Phim Đã Đặt
             </h3>
-            <h3 className="text-white cursor-pointer  hover:text-red-500 hover:scale-105 duration-200 mb-0">
-              Tìm Kiếm
-            </h3>
-            <h3 className="text-white cursor-pointer  hover:text-red-500 hover:scale-105 duration-200 mb-0">
-              Ứng Dụng
-            </h3>
+
+            <a
+              href="https://capstone-react-admin.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white cursor-pointer  hover:text-red-500 hover:scale-105 duration-200 mb-0"
+            >
+              Admin Panel
+            </a>
           </div>
           <UserNav />
         </div>

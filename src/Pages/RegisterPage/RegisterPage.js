@@ -2,17 +2,17 @@ import React from "react";
 import { Button, Form, Input, message } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Lottie from "lottie-react";
 import { setUserRegisterActionServ } from "../../Redux/actions/actionUser";
+import Style from "./register.module.css";
 
 export default function RegisterPage() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const onFinish = (values) => {
     let onSuccess = () => {
-      message.success("Register Success");
+      message.success("Đăng kí tài khoản Thành Công");
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 2000);
     };
     let onFail = (reason) => {
@@ -29,7 +29,7 @@ export default function RegisterPage() {
     <div className="max-w-layout mx-auto min-h-[75vh] flex items-center justify-center">
       <div className="w-1/2 h-full flex items-center justify-center">
         <Form
-          className="bg-white w-full rounded-3xl"
+          className={`${Style["cardglass"]} w-full`}
           layout="vertical"
           name="basic"
           labelCol={{
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                   </Button>
                 </div>
 
-                <h3 className="text-center">
+                <h3 className="text-center text-white">
                   Nếu bạnh đã có tài khoản, vui lòng{" "}
                   <NavLink to="/login">
                     <span>Đăng Nhập</span>

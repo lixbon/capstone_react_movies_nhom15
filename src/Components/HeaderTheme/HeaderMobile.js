@@ -24,22 +24,18 @@ export default function HeaderMobile({ nav, setNav }) {
       >
         Phim Đã Đặt
       </h3>
-      <h3
+
+      <a
         onClick={() => {
           setNav(!nav);
         }}
         className="text-white cursor-pointer text-2xl"
+        href="https://capstone-react-admin.vercel.app/"
+        target="_blank"
+        rel="noreferrer"
       >
-        Tìm Kiếm
-      </h3>
-      <h3
-        onClick={() => {
-          setNav(!nav);
-        }}
-        className="text-white cursor-pointer text-2xl"
-      >
-        Ứng Dụng
-      </h3>
+        Admin Panel
+      </a>
 
       <UserNav />
     </div>
