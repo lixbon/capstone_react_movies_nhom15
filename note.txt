@@ -1,0 +1,6 @@
+link repo UserPanel: https://github.com/lixbon/capstone_react_movies_nhom15.git
+link repo AdminPanel: https://github.com/lixbon/capstone_react_admin.git
+Link Youtue: https://youtu.be/u8QaUT60dIU
+Link deploy:
+            +User: https://capstone-react-bc04.vercel.app/
+            +Admin: https://capstone-react-admin.vercel.app/
