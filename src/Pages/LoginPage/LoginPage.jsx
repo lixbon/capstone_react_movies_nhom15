@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Form, Input, message } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Lottie from "lottie-react";
 import { setUserLoginActionServ } from "../../Redux/actions/actionUser";
 
 export default function LoginPage() {

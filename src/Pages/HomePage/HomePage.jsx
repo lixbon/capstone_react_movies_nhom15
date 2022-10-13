@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../Components/Button/Button";
+import MovieTrailler from "../../Components/TraillerMovie/MovieTrailler";
 import { setMoviesList } from "../../Redux/actions/actionsMovies";
 import {
   setLoadingOffAction,
@@ -14,6 +15,9 @@ import TabsMovies from "./TabsMovies";
 export default function HomePage() {
   let movies = useSelector((state) => {
     return state.moviesReducer.moviesList;
+  });
+  let { isTraillerModal } = useSelector((state) => {
+    return state.moviesReducer;
   });
   const [showAllFilm, setshowAllFilm] = useState(false);
   let dispatch = useDispatch();
@@ -66,6 +70,13 @@ export default function HomePage() {
       <div>
         <TabsMovies />
       </div>
+      {isTraillerModal ? (
+        <div>
+          <MovieTrailler />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
